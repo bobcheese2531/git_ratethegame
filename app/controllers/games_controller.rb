@@ -1,59 +1,46 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
 
-  # GET /games or /games.json
+  # GET /games
   def index
-    @games = Game.all
+    @games = Game.order('id DESC')
   end
 
-  # GET /games/1 or /games/1.json
+  # GET /games/1 
   def show
   end
 
   # GET /games/new
   def new
     @game = Game.new
+    15.times{ @game.rates.build }
   end
 
   # GET /games/1/edit
   def edit
   end
 
-  # POST /games or /games.json
+  # POST /games
   def create
     @game = Game.new(game_params)
-
-    respond_to do |format|
-      if @game.save
-        format.html { redirect_to @game, notice: "Game was successfully created." }
-        format.json { render :show, status: :created, location: @game }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
-      end
-    end
+    @game.save
+    redirect_to action: :index
   end
 
-  # PATCH/PUT /games/1 or /games/1.json
+  # PATCH/PUT /games/1 
   def update
-    respond_to do |format|
-      if @game.update(game_params)
-        format.html { redirect_to @game, notice: "Game was successfully updated." }
-        format.json { render :show, status: :ok, location: @game }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
-      end
+    if @game.user_id == current_user.id
+      @game.update(update_game_params)
     end
+    redirect_to action: :index
   end
 
   # DELETE /games/1 or /games/1.json
   def destroy
-    @game.destroy
-    respond_to do |format|
-      format.html { redirect_to games_url, notice: "Game was successfully destroyed." }
-      format.json { head :no_content }
+    if @game.user_id == current_user.id
+      @game.destroy
     end
+    redirect_to action: :index
   end
 
   private
@@ -64,6 +51,10 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:user_id, :home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team)
+      params.require(:game).permit(:home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team, rates_attributes: [:game_id, :position, :name, :rate, :rate_text]).permit(user_id: current.user.id)
+    end
+    
+    def update_game_params
+      params.require(:game).permit(:home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team, rates_attributes: [:game_id, :position, :name, :rate, :rate_text, :_destroy, :id]).permit(user_id: current.user.id)
     end
 end
