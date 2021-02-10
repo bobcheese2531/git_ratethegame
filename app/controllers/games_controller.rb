@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /games
   def index
@@ -35,7 +36,7 @@ class GamesController < ApplicationController
     redirect_to action: :index
   end
 
-  # DELETE /games/1 or /games/1.json
+  # DELETE /games/1
   def destroy
     if @game.user_id == current_user.id
       @game.destroy
@@ -50,6 +51,6 @@ class GamesController < ApplicationController
     end
     
     def game_params
-      params.require(:game).permit(:home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team, rates_attributes: [:game_id, :position, :name, :rate, :rate_text]).merge(user_id: current_user.id, rates_attributes: [user_id: current_user.id])
+      params.require(:game).permit(:home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team, rates_attributes: [:game_id, :position, :name, :rate, :rate_text, :id, :_destroy]).merge(user_id: current_user.id)
     end
 end
