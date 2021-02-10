@@ -13,7 +13,7 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
-    15.times{ @game.rates.build }
+    16.times{ @game.rates.build }
   end
 
   # GET /games/1/edit
@@ -30,7 +30,7 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1 
   def update
     if @game.user_id == current_user.id
-      @game.update(update_game_params)
+      @game.update(game_params)
     end
     redirect_to action: :index
   end
@@ -48,13 +48,8 @@ class GamesController < ApplicationController
     def set_game
       @game = Game.find(params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
-    def game_params
-      params.require(:game).permit(:home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team, rates_attributes: [:game_id, :position, :name, :rate, :rate_text]).permit(user_id: current.user.id)
-    end
     
-    def update_game_params
-      params.require(:game).permit(:home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team, rates_attributes: [:game_id, :position, :name, :rate, :rate_text, :_destroy, :id]).permit(user_id: current.user.id)
+    def game_params
+      params.require(:game).permit(:home_team, :away_team, :home_score, :away_score, :date, :mom, :game_text, :rate_team, rates_attributes: [:game_id, :position, :name, :rate, :rate_text]).merge(user_id: current_user.id, rates_attributes: [user_id: current_user.id])
     end
 end
