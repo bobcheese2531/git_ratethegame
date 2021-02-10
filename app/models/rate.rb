@@ -1,4 +1,4 @@
 class Rate < ApplicationRecord
-    belongs_to :user
-    belongs_to :game
+    validates :name, :presence => true
+    belongs_to :game, optional: true
 end

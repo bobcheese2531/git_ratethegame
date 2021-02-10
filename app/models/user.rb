@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :games
-  has_many :rates
+  validates :nickname, presence: true, uniqueness: true
 end
