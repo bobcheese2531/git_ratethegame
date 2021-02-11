@@ -1,0 +1,13 @@
+<div class="info-box">
+    <p><%= game.user.nickname %>'s Rate</p>
+    <ul class="game-info">
+        <li>Match Date: <%= game.date %></li>
+        <li>Match: <%= game.home_team %> <%= game.home_score %> : <%= game.away_score %> <%= game.away_team %></li>
+        <li>Rated Team: <%= game.rate_team %></li>
+    </ul>
+    <% if user_signed_in? && game.user_id == current_user.id %>  
+        <%= link_to '編集', "/games/#{game.id}/edit", method: :get, class: "btn-square" %>
+        <%= link_to '削除', "/games/#{game.id}", method: :delete, data: {confirm: "削除しますか？"} %>
+    <% end %>
+    <%= link_to "SHOW", "/games/#{game.id}", method: :get %>
+</div>
