@@ -1,9 +1,9 @@
 <div class="nested-fields">
-    <%= f.select :position, {'GK': 1, 'CB': 2, 'RB': 3, 'LB': 4, 'DMF': 5, 'CMF': 6, 'OMF': 7, 'RMF': 8, 'LMF': 9, 'RWG': 10, 'LWG': 11, 'ST': 12, 'CF': 13 }, { include_blank: 'POS' }  %>
+    <%= f.select :position, {'GK': 'GK', 'CB': 'CB', 'RB': 'RB', 'LB': 'LB', 'DMF': 'DMF', 'CMF': 'CMF', 'OMF': 'OMF', 'RMF': 'RMF', 'LMF': 'LMF', 'RWG': 'RWG', 'LWG': 'LWG', 'ST': 'ST', 'CF': 'CF' }, { include_blank: 'POS' } %>
     
     <%= f.text_field :name, :placeholder => "Player Name" %>
     
-    <%= f.select :rate, {'--': 1, '1': 2, '2': 3, '3': 4, '4': 5, '5': 6, '6': 7, '7': 8, '8': 9, '9': 10, '10': 11 }, { include_blank: 'RATE' } %>
+    <%= f.select :rate, {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10}, { include_blank: 'RATE'} %>
     
     <%= f.label :rate_text %>
     <%= f.text_field :rate_text, :placeholder => "Player Comment" %>

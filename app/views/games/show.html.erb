@@ -1,26 +1,25 @@
 <p id="notice"><%= notice %></p>
-
+<h1><%= @game.home_team %> vs <%= @game.away_team %></h1>
 <h2>Match Information</h2>
 <ul class="match-info">
-  <li>MATCH DATE: <%= @game.date %></li>
-  <li>SCORE: <%= @game.home_team %> <%= @game.home_score %> : <%= @game.away_score %> <%= @game.away_team%></li>
-  <li>MOTM: <%= @game.mom %></li>
-  <li>COMMENT: <%= @game.game_text %></li>
+  <li><strong>MATCH DATE</strong>: <%= @game.date %></li>
+  <li><strong>SCORE</strong>: <%= @game.home_team %> <%= @game.home_score %> : <%= @game.away_score %> <%= @game.away_team%></li>
+  <li><strong>MOTM</strong>: <%= @game.mom %></li>
+  <li class="game-comment"><strong>COMMENT</strong>: <%= @game.game_text %></li>
 </ul>
 
 <h2><%= @game.rate_team %>'s Player Rate</h2>
 
-<div class="player-rate">
+<div id="wrap" class="player-rate">
   <% @game.rates.each do |rate| %>
-  <ul class="rate-box">
-    <li>POSITION: <%= rate.position %></li>
-    <li>NAME: <%= rate.name %></li>
-    <li>RATE: <%= rate.rate %></li>
-    <li>COMMENT: <%= rate.rate_text %></li>
-  </ul>
+  <div class="rate-box">
+    <p><strong><%= rate.position %> - <%= rate.name %></strong></p>
+    <p><strong>RATE</strong>: <%= rate.rate %></p>
+    <p class="player-comment"><strong>COMMENT</strong>: <%= rate.rate_text %></p>
+  </div>
   <% end %>
 </div>
-<% if user_signed_in? && game.user_id == current_user.id %>
-<%= link_to 'Edit', edit_game_path(@game) %> 
+<% if user_signed_in? && @game.user_id == current_user.id %>
+<%= link_to 'Edit', edit_game_path(@game), class: "btn" %> 
 <% end %>
-<%= link_to 'Back', games_path %>
+<%= link_to 'Back', games_path, class: "btn" %>

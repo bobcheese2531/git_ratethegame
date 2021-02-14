@@ -1,11 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Games</h1>
+<h1>RATES</h1>
 
-<div class="content">
+<div id="wrap" class="content">
 <% @games.each do |game| %>
 <%= render 'game', game: game %>
 <% end %>
 </div>
-
-<%= link_to 'New Game', new_game_path %>

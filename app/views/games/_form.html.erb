@@ -2,42 +2,41 @@
   <h2>Game Information</h2>
     <div class="game-info-form">
       <div class="team">
-        <%= form.label :home_team %>
+        <div class="label">Match</div> 
         <%= form.text_field :home_team, :placeholder => "Home Team" %>
-        <p>vs</p>
-        <%= form.label :away_team %>
+        <div class="colon">:</div>
         <%= form.text_field :away_team, :placeholder => "Away Team" %>
       </div>
 
       <div class="score">
-        <%= form.label :home_score %>
-        <%= form.number_field :home_score, :placeholder => "Home Score" %>
-        <p>:</p>
-        <%= form.label :away_score %>
-        <%= form.number_field :away_score, :placeholder => "Away Score" %>
+        <div class="label">Score</div>
+        <%= form.number_field :home_score, min: 0, :placeholder => "Home Score" %>
+        <div class="colon">:</div>
+        <%= form.number_field :away_score, min: 0, :placeholder => "Away Score" %>
       </div>
 
       <div class="date">
-        <%= form.label :date %>
+        <div class="label">Date</div>
         <%= form.date_select :date %>
       </div>
 
       <div class="mom">
-        <%= form.label :mom %>
+        <div class="label">MOTM</div> 
         <%= form.text_field :mom, :placeholder => "Man of the Match" %>
       </div>
 
       <div class="game_text">
-        <%= form.label :game_text %>
-        <%= form.text_area :game_text, :placeholder => "Game Comment" %>
+        <div class="label">Game Comment</div> 
+        <%= form.text_area :game_text, size: "100x15", :placeholder => "Game Comment" %>
       </div>
 
       <div class="rate_team">
-        <%= form.label :rate_team %>
-        <%= form.text_field :rate_team , :placeholder => "Rate Team"%>
+        <div class="label">Rate Team</div> 
+        <%= form.text_field :rate_team, :placeholder => "Rate Team"%>
       </div>
     </div>
   
+  <h2>Player Rate</h2>
     <%= form.fields_for :rates do |r| %>
       <%= render partial: "rate_fields", locals: {f: r} %>
     <% end %>
