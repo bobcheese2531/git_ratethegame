@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+ 
+.header {
+    background-color: black ;
+}
+.header__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+    padding: 22px 40px;
+}
+
+.logo {
+    color: white;
+    text-decoration: none; 
+    font-size: 30px;
+    font-family: 'Anton', sans-serif;
+}
+
+.bar {
+    display: flex;
+}
+
+.option {
+    color: white;
+    text-decoration: none; 
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+.header_option .option:hover {
+    background: #fff;
+    color: black;
+}

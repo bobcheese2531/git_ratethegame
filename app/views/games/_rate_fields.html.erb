@@ -1,13 +1,26 @@
 <div class="nested-fields">
-    <%= f.select :position, {'GK': 'GK', 'CB': 'CB', 'RB': 'RB', 'LB': 'LB', 'DMF': 'DMF', 'CMF': 'CMF', 'OMF': 'OMF', 'RMF': 'RMF', 'LMF': 'LMF', 'RWG': 'RWG', 'LWG': 'LWG', 'ST': 'ST', 'CF': 'CF' }, { include_blank: 'POS' } %>
+    <div class="player-form-box">
+        <div class="label">Position</div> 
+        <%= f.select :position, {'GK': 'GK', 'CB': 'CB', 'RB': 'RB', 'LB': 'LB', 'DMF': 'DMF', 'CMF': 'CMF', 'OMF': 'OMF', 'RMF': 'RMF', 'LMF': 'LMF', 'RWG': 'RWG', 'LWG': 'LWG', 'ST': 'ST', 'CF': 'CF' }, { include_blank: 'SELECT' } %>
+    </div>
     
-    <%= f.text_field :name, :placeholder => "Player Name" %>
+    <div class="player-form-box">
+        <div class="label">Name</div> 
+        <%= f.text_field :name, :placeholder => "Player Name" %>
+    </div> 
     
-    <%= f.select :rate, {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10}, { include_blank: 'RATE'} %>
+    <div class="player-form-box">
+        <div class="label">Rate</div> 
+        <%= f.select :rate, {'0': '0', '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10}, { include_blank: 'RATE'} %>
+    </div>
     
-    <%= f.label :rate_text %>
-    <%= f.text_field :rate_text, :placeholder => "Player Comment" %>
+    <div class="player-form-box">
+        <div class="label">Player Comment</div> 
+        <%= f.text_area :rate_text, size: "50x5", :placeholder => "Player Comment" %>
+    </div>
 
-  
-<%= link_to_remove_association "remove", f %>
+<div class="remove">  
+<%= link_to_remove_association "remove", f, class: 'btn' %>
+</div>
+
 </div>

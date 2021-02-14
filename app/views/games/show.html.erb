@@ -20,6 +20,6 @@
   <% end %>
 </div>
 <% if user_signed_in? && @game.user_id == current_user.id %>
-<%= link_to 'Edit', edit_game_path(@game), class: "btn" %> 
+<%= link_to 'Edit', edit_game_path(@game), class: "btn" %> | 
 <% end %>
 <%= link_to 'Back', games_path, class: "btn" %>

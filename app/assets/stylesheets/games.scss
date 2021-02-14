@@ -1,3 +1,176 @@
 // Place all the styles related to the games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ul {
+     list-style: none;
+}
+
+h1 {
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: black;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px black;/*左線*/
+}
+
+h2 {
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+}
+
+h2:before, h2:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+h2:before {
+  left:0;
+}
+h2:after {
+  right: 0;
+}
+
+#wrap {
+  width:100%;
+  overflow:hidden;
+}
+
+.content {
+    width: 960px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.info-box {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    width: 30%;
+    height: 300px;
+    border-radius: 20px;
+    margin: 10px 20px 20px 10px;
+    text-align: center;
+    align-items: center;
+}
+.name {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.info-box .name a {
+  text-decoration: none;
+  color: black;
+}
+
+.info-box .name a:hover {
+  border-bottom: 2px solid black;
+  padding-bottom: 3px;
+  text-decoration: none;
+}
+
+.game-info {
+    padding: 20px;
+}
+
+.info {
+    font-size: 15px;
+    padding-bottom: 3px;
+}
+
+.links {
+    justify-content: space-between;
+    text-align: center;
+}
+
+.btn {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+  color: black ;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.btn:hover {
+  color: #fff;
+  background: #000;
+}
+
+.match-info {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    border-radius: 20px;
+    width: 500px;
+    height: auto;
+    line-height: 2;
+    padding: 20px;
+    margin: 20px;
+    
+}
+.player-rate {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1500px;
+}
+.rate-box {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    border-radius: 20px;
+    width: 250px;
+    height: auto;
+    flex-shrink: 0;
+    margin: 20px;
+    padding: 15px;
+}
+
+.game-form-box {
+  display: flex;
+  margin: 20px;
+}
+
+.label {
+  width: 95px;
+  font-weight: bold;
+}
+
+.colon {
+  margin: 0 5px;
+}
+
+.player-form-box {
+  display: flex;
+  margin: 10px;
+}
+
+.game-info-form{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    border-radius: 20px;
+    height: auto;
+    width: 800px;
+    flex-shrink: 0;
+    margin: 20px;
+    padding: 15px;
+}
+
+.nested-fields {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    border-radius: 20px;
+    height: auto;
+    width: 450px;
+    flex-shrink: 0;
+    margin: 20px;
+    padding: 15px;
+}
+
+.remove {
+  text-align: center;
+}
+
+.btn.btn-submit {
+  width: 120px;
+  height: 50px;
+  margin: 15px 200px;
+  border-radius: 5px;
+  font-weight: bold;
+}
