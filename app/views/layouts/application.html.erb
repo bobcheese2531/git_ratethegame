@@ -10,6 +10,23 @@
   </head>
 
   <body>
+  <header class="header">
+      <div class="header__bar">
+        <a href="/" class="logo">RateTheGame</a>
+        <% if user_signed_in? %>  
+          <ul class="bar">
+            <li class="header_option"><%= link_to "RATE", new_game_path, class: "option" %></li>
+            <li class="header_option "><%= link_to "LOG OUT", destroy_user_session_path, method: :delete, class: "option" %></li>
+            <li class="header_option"><%= link_to "MY PAGE", "/users/:#{current_user.id}", class: "option" %></li>
+          </ul>
+        <% else %>
+          <ul class="bar">
+            <li class="header_option"><%= link_to "LOG IN", new_user_session_path, class: "option" %></li>
+            <li class="header_option"><%= link_to "CREATE ACCOUNT", new_user_registration_path, class: "option" %></li>
+          </ul>
+        <% end %>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

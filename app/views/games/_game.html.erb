@@ -1,16 +1,21 @@
-<div class="info-box">
-    <p class="name"><a href="/games/<%= game.id %>"><%= game.home_team %> <%= game.home_score %> : <%= game.away_score %> <%= game.away_team %></a></p>
+<div class="content">
+        
+    <div class="info-box">
     
-    <ul class="game-info">
-        <li class="info">MATCH DATE: <%= game.date %></li>
-        <li class="info">RATED TEAM: <%= game.rate_team %></li>
-        <li class="info">RATED BY: <%= game.user.nickname %></li>
-    </ul>
-    <div class="links">
-        <%= link_to "SHOW", "/games/#{game.id}", method: :get, class: "btn" %>
-        <% if user_signed_in? && game.user_id == current_user.id %>  
-            <%= link_to 'EDIT', "/games/#{game.id}/edit", method: :get, class: "btn" %>
-            <%= link_to 'DELETE', "/games/#{game.id}", method: :delete, class: "btn", data: {confirm: "削除しますか？"} %>
-        <% end %>
+        <p class="team-name"><a href="/games/<%= game.id %>"><%= game.home_team %> <%= game.home_score %> : <%= game.away_score %> <%= game.away_team %></a></p>
+    
+        <p class="info"><strong>MATCH DATE</strong>: <%= game.date %></p>
+        <p class="info"><strong>RATED TEAM</strong>: <%= game.rate_team %></p>
+        <p class="info"><strong>RATED BY</strong>: <%= game.user.nickname %></p>
+            
+        <ul class="links">
+            <li class="action-option"><%= link_to "SHOW", game_path(game), method: :get, class: "btn" %></li>
+            <% if user_signed_in? && game.user_id == current_user.id %>  
+                <li class="action-option"><%= link_to 'EDIT', edit_game_path(game), method: :get, class: "btn" %></li>
+                <li class="action-option"><%= link_to 'DELETE', "/games/#{game.id}", method: :delete, class: "btn", data: {confirm: "削除しますか？"} %></li>
+            <% end %>
+        </ul>
+            
     </div>
+    
 </div>

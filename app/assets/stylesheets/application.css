@@ -30,7 +30,7 @@
 .logo {
     color: white;
     text-decoration: none; 
-    font-size: 30px;
+    font-size: 40px;
     font-family: 'Anton', sans-serif;
 }
 
@@ -42,7 +42,8 @@
     color: white;
     text-decoration: none; 
     margin: 0 20px;
-    font-weight: bold;
+    font-family: 'Anton', sans-serif;
+    font-size: 25px;
 }
 
 .header_option .option:hover {
@@ -65,8 +66,9 @@
     height: auto;
     width: 300px;
     flex-shrink: 0;
-    margin: 20px;
+    margin: 0 auto;
     padding: 10px;
+    text-align: center;
   }
   
   .btn.btn-devise {
@@ -74,3 +76,6 @@
      font-size: 20px;
   }
  
+ .shared-link {
+     margin: 0;
+ }

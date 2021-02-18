@@ -1,24 +1,32 @@
 <p id="notice"><%= notice %></p>
+
 <h1><%= @game.home_team %> vs <%= @game.away_team %></h1>
-<h2>Match Information</h2>
-<ul class="match-info">
-  <li><strong>MATCH DATE</strong>: <%= @game.date %></li>
-  <li><strong>SCORE</strong>: <%= @game.home_team %> <%= @game.home_score %> : <%= @game.away_score %> <%= @game.away_team%></li>
-  <li><strong>MOTM</strong>: <%= @game.mom %></li>
-  <li class="game-comment"><strong>COMMENT</strong>: <%= @game.game_text %></li>
-</ul>
 
-<h2><%= @game.rate_team %>'s Player Rate</h2>
-
-<div id="wrap" class="player-rate">
-  <% @game.rates.each do |rate| %>
-  <div class="rate-box">
-    <p><strong><%= rate.position %> - <%= rate.name %></strong></p>
-    <p><strong>RATE</strong>: <%= rate.rate %></p>
-    <p class="player-comment"><strong>COMMENT</strong>: <%= rate.rate_text %></p>
-  </div>
-  <% end %>
+<div class="wrap">
+  <h2>Match Information</h2>
 </div>
+
+  <ul class="match-info">
+    <li><strong>MATCH DATE</strong>: <%= @game.date %></li>
+    <li><strong>SCORE</strong>: <%= @game.home_team %> <%= @game.home_score %> : <%= @game.away_score %> <%= @game.away_team%></li>
+    <li><strong>MOTM</strong>: <%= @game.mom %></li>
+    <li class="game-comment"><strong>COMMENT</strong>: <%= @game.game_text %></li>
+  </ul>
+  
+<div class="wrap">
+  <h2><%= @game.rate_team %>'s Player Rate</h2>
+</div>
+
+  <% @game.rates.each do |rate| %>
+    <div class="player-rate">
+      <div class="rate-box">
+        <p><strong><%= rate.position %> - <%= rate.name %></strong></p>
+        <p><strong>RATE</strong>: <%= rate.rate %></p>
+        <p class="player-comment"><strong>COMMENT</strong>: <%= rate.rate_text %></p>
+      </div>
+    </div>  
+  <% end %>
+
 <% if user_signed_in? && @game.user_id == current_user.id %>
 <%= link_to 'Edit', edit_game_path(@game), class: "btn" %> | 
 <% end %>
